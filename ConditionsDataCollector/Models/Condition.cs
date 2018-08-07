@@ -13,6 +13,5 @@ namespace ConditionsDataCollector.Models
         public float Temperature { get; set; }
         public float Humidity { get; set; }
         public DateTime TimeStamp { get; set; }
-
     }
 }
