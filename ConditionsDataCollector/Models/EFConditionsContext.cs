@@ -8,7 +8,7 @@ namespace ConditionsDataCollector.Models
     class EFConditionsContext: DbContext
     {
         public DbSet<Condition> Conditions { get; set; }
-        //public DbSet<Alarm> Alarms { get; set; }
+        public DbSet<Alarm> Alarms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
