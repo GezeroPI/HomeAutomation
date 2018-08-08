@@ -9,7 +9,7 @@ using System;
 
 namespace ConditionsDataCollector.Migrations
 {
-    [DbContext(typeof(EFConditionsContext))]
+    [DbContext(typeof(ApplicationDBContext))]
     [Migration("20180808064029_initial")]
     partial class initial
     {

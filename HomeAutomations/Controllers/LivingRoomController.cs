@@ -15,12 +15,12 @@ namespace HomeAutomations.Controllers
     {
         // GET api/LivingRoom
         [HttpGet]
-        public AreaSensor Get()
+        public Condition Get()
         {
             //DHT11 sensor initialize at GPIO 17
             var dhtLocalLivingRoom = new DHT(Pi.Gpio[P1.Gpio17], DHTSensorTypes.DHT11);
             var sensorData = dhtLocalLivingRoom.ReadData();
-            return new AreaSensor { Name = "LivingRoom1", Temperature = sensorData.TempCelcius.ToString(), Humidity = sensorData.Humidity.ToString() };
+            return new Condition { SensorName = "LivingRoom1", Temperature = sensorData.TempCelcius, Humidity = sensorData.Humidity, TimeStamp = DateTime.Now };
         }
 
         // GET api/LivingRoom/fan/1

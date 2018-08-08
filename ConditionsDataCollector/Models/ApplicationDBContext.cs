@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ConditionsDataCollector.Models
 {
-    class EFConditionsContext: DbContext
+    public class ApplicationDBContext: DbContext
     {
         public DbSet<Condition> Conditions { get; set; }
         public DbSet<Alarm> Alarms { get; set; }
@@ -15,5 +15,6 @@ namespace ConditionsDataCollector.Models
         {
             optionsBuilder.UseMySQL(@"Server=.\;Database=HomeReports;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
+        
     }
 }

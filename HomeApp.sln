@@ -5,9 +5,7 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alarm", "Alarm\Alarm.csproj", "{E7BA5EB0-D510-410B-80CA-DF02843DF3BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeAutomations", "HomeAutomations\HomeAutomations.csproj", "{61B519DA-2FE1-42B1-A392-B3E158178DE9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConditionsDataCollector", "ConditionsDataCollector\ConditionsDataCollector.csproj", "{448F7C2E-52E2-4EB3-B961-65269EC0509C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HomeAutomations", "HomeAutomations\HomeAutomations.csproj", "{61B519DA-2FE1-42B1-A392-B3E158178DE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{61B519DA-2FE1-42B1-A392-B3E158178DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61B519DA-2FE1-42B1-A392-B3E158178DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61B519DA-2FE1-42B1-A392-B3E158178DE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{448F7C2E-52E2-4EB3-B961-65269EC0509C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{448F7C2E-52E2-4EB3-B961-65269EC0509C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{448F7C2E-52E2-4EB3-B961-65269EC0509C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{448F7C2E-52E2-4EB3-B961-65269EC0509C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

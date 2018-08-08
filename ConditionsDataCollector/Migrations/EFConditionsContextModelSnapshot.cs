@@ -9,7 +9,7 @@ using System;
 
 namespace ConditionsDataCollector.Migrations
 {
-    [DbContext(typeof(EFConditionsContext))]
+    [DbContext(typeof(ApplicationDBContext))]
     partial class EFConditionsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
