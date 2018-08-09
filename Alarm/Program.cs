@@ -10,7 +10,9 @@ namespace Alarm
     {
         private static readonly string _password = "123";
 
-        static void Main(string[] args)
+        static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
+
+        static async Task MainAsync(string[] args)
         {
             Console.WriteLine("Starting Alarm ...");
             Console.WriteLine("Waitting sensors to calibrate ...");
@@ -32,7 +34,7 @@ namespace Alarm
             //siren test
             Siren.alarm(3000);
             Console.Clear();
-
+            string sensorTriggered = "";
             bool iterationloop = true;
             bool sirenStatus = false;
             //Arm infinite loop
@@ -70,7 +72,8 @@ namespace Alarm
                     // Here we check the sensors every few seconds. This is armed mode = on
                     if (pir1.Data.Read() && sirenStatus == false)
                     {
-                        sirenStatus = !sirenStatus;
+                        sirenStatus = true;
+                        sensorTriggered = pir1.NameLocation;
                     }
 
                     //If any sensor enabled will make siren alarm for a while
@@ -80,6 +83,16 @@ namespace Alarm
                         var sirenAlarm = new Thread(() => Siren.alarm(600000));
                         sirenAlarm.IsBackground = true;
                         sirenAlarm.Start();
+                        var result = await GetRest.GetResponseAsync("http://localhost:50122/api/SaveRecords/Alarm/-/"+ sensorTriggered);
+                        if (result)
+                        {
+                           Console.WriteLine("Record of the alarm success!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Record of the alarm failed!");
+                        }
+                       
                     }
                     // .. and be sure to Yield/Sleep to prevent 100% CPU usage.
 

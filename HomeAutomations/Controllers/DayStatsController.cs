@@ -11,7 +11,7 @@ namespace HomeAutomations.Controllers
     {
         // GET api/DayStats
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Get()
         {
             return View();
         }

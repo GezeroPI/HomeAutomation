@@ -36,8 +36,7 @@ namespace HomeAutomations.Controllers
                 TimeStamp = DateTime.Now
             };
             _conditionRepository.insertCondition(lvRoomSensor1);
-
-
+            
             return Ok(StatusCode(200));
         }
         // GET api/SaveRecords/triggered/message/livingPIR
