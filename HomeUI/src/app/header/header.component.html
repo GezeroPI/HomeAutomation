@@ -1,0 +1,58 @@
+<header class="masthead">
+  <div class="container h-100">
+    <div class="row h-100">
+      
+      <div class="col-lg-6 my-auto mb-10"  style="padding-bottom:10px;">
+        <div class="card" >
+          <div style="padding: 35px 20px 0px 10px">
+            <h2 style="color:black !important;text-align: center;">Temperature of the day</h2>
+          <ngx-charts-line-chart
+      [view]="view"
+      [scheme]="colorScheme"
+      [results]="multi"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="autoScale"
+      [timeline]="timeline"
+      [yScaleMin]="yscaleMin"
+      [yScaleMax]="yscaleMax"
+      [roundDomains]="roundDomains"
+      (select)="onSelect($event)">
+</ngx-charts-line-chart>
+</div>
+  </div>
+      </div>
+  <div class="col-lg-6 my-auto mb-10"  style="padding-bottom:10px;">
+        <div class="card" >
+            <div style="padding: 35px 20px 0px 10px">
+                <h2 style="color:black !important;text-align: center;">Humidity of the day</h2>
+            <ngx-charts-line-chart
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="multi2"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel2"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [autoScale]="autoScale"
+            [timeline]="timeline"
+            [yScaleMin]="yscaleMin2"
+            [yScaleMax]="yscaleMax2"
+            [roundDomains]="roundDomains"
+            (select)="onSelect($event)">
+      </ngx-charts-line-chart>
+    </div></div>
+      </div>
+    </div>
+  </div>
+</header>
