@@ -18,7 +18,7 @@ namespace HomeAutomations.Controllers
         public Condition Get()
         {
             //DHT11 sensor initialize at GPIO 17
-            var dhtLocalLivingRoom = new DHT(Pi.Gpio[P1.Gpio17], DHTSensorTypes.DHT11);
+            var dhtLocalLivingRoom = new DHT(Pi.Gpio[P1.Gpio18], DHTSensorTypes.DHT11);
             var sensorData = dhtLocalLivingRoom.ReadData();
             return new Condition { SensorName = "LivingRoom1", Temperature = sensorData.TempCelcius, Humidity = sensorData.Humidity, TimeStamp = DateTime.Now };
         }
@@ -29,14 +29,14 @@ namespace HomeAutomations.Controllers
         {
             if (device == "fan")
             {
-                var fanPin = Pi.Gpio[P1.Gpio26];
+                var fanPin = Pi.Gpio[P1.Gpio12];
                 fanPin.PinMode = GpioPinDriveMode.Output;
                 fanPin.Write(onOff);
                 return $"Fan with Pin No{fanPin.BcmPinNumber} set to {onOff}";
             }
             else if (device == "led")
             {
-                var ledPin = Pi.Gpio[P1.Gpio25];
+                var ledPin = Pi.Gpio[P1.Gpio6];
                 ledPin.PinMode = GpioPinDriveMode.Output;
                 ledPin.Write(onOff);
                 return $"Led with Pin No{ledPin.BcmPinNumber} set to {onOff}";
