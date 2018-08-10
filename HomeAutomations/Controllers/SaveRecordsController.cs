@@ -26,7 +26,7 @@ namespace HomeAutomations.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var dhtLocalLivingRoom = new DHT(Pi.Gpio[P1.Gpio17], DHTSensorTypes.DHT11);
+            var dhtLocalLivingRoom = new DHT(Pi.Gpio[P1.Gpio18], DHTSensorTypes.DHT11);
             var sensorData = dhtLocalLivingRoom.ReadData();
             var lvRoomSensor1 = new Condition
             {
