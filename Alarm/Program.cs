@@ -8,7 +8,6 @@ namespace Alarm
 {
     class Program
     {
-        private static readonly string _password = "123";
 
         static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
 
