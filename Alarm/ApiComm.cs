@@ -9,20 +9,25 @@ using System.Threading.Tasks;
 
 namespace Alarm
 {
-    static class ApiComm
+    public static class ApiComm
     {
-        private static readonly HttpClient client = new HttpClient();
-
-        public static async Task<PirSensor> GetProductAsync(string path)
+        public static async Task<bool> GetResponseAsync(string uri)
         {
-            var sensor = new PirSensor();
-            HttpResponseMessage response = await client.GetAsync(path);
-            if (response.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                string data = await response.Content.ReadAsStringAsync();
-                sensor = JsonConvert.DeserializeObject<PirSensor>(data);
+                bool status;
+                var result = await client.GetAsync(uri);
+                var response = await result.Content.ReadAsStringAsync();
+                if (response.Contains("200"))
+                {
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+                return status;
             }
-            return sensor;
         }
 
     }

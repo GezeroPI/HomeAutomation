@@ -40,7 +40,7 @@ namespace Alarm
             while (true)
             {
                 //initialize a thread for arm loop
-                var passwordInput = new Thread(() => iterationloop = User.ArmDesarm());
+                var passwordInput = new Thread(async () => iterationloop = await User.ArmDesarm());
                 passwordInput.IsBackground = true;
                 passwordInput.Start();
                 if (iterationloop)
@@ -62,7 +62,7 @@ namespace Alarm
                     Console.WriteLine("Armed");
                     iterationloop = !iterationloop;
                     //initialize a thread for desarm loop
-                    passwordInput = new Thread(() => iterationloop = User.ArmDesarm());
+                    passwordInput = new Thread(async () => iterationloop = await User.ArmDesarm());
                     passwordInput.IsBackground = true;
                     passwordInput.Start();
                 }
@@ -82,7 +82,7 @@ namespace Alarm
                         var sirenAlarm = new Thread(() => Siren.alarm(600000));
                         sirenAlarm.IsBackground = true;
                         sirenAlarm.Start();
-                        var result = await GetRest.GetResponseAsync("http://localhost:50122/api/SaveRecords/Alarm/-/"+ sensorTriggered);
+                        var result = await ApiComm.GetResponseAsync("http://localhost:50122/api/SaveRecords/Alarm/-/"+ sensorTriggered);
                         if (result)
                         {
                            Console.WriteLine("Record of the alarm success!");
