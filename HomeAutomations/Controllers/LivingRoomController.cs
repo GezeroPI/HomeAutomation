@@ -36,7 +36,7 @@ namespace HomeAutomations.Controllers
             }
             else if (device == "led")
             {
-                var ledPin = Pi.Gpio[P1.Gpio6];
+                var ledPin = Pi.Gpio[P1.Gpio06];
                 ledPin.PinMode = GpioPinDriveMode.Output;
                 ledPin.Write(onOff);
                 return $"Led with Pin No{ledPin.BcmPinNumber} set to {onOff}";
