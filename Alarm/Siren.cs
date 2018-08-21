@@ -7,12 +7,20 @@ using Unosquare.RaspberryIO.Gpio;
 
 namespace Alarm
 {
-    public static class Siren
+    public  class Siren : ISiren
     {
-        public static GpioPin SirenPowerGpio { get; set; }
-        public static GpioPin SirenStartGpio { get; set; }
+        public GpioPin SirenPowerGpio { get; set; }
+        public GpioPin SirenStartGpio { get; set; }
 
-        public static void alarm(int milliseconds)
+        public void Trigger(Sensor sensor)
+        {
+            if (sensor.Status)
+            {
+                alarm(100000);
+            }
+        }
+
+        public void alarm(int milliseconds)
         {
             try
             {

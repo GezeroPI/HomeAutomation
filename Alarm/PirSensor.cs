@@ -5,11 +5,8 @@ using Unosquare.RaspberryIO.Gpio;
 
 namespace Alarm
 {
-    class PirSensor
+    class PirSensor: Sensor
     {
-        public string NameLocation { get; set; }
-        public GpioPin Data { get; set; }
-
-
+        public PirSensor(bool status) : base(status) { }
     }
 }
