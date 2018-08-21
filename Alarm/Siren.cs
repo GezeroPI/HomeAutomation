@@ -16,7 +16,8 @@ namespace Alarm
         {
             if (sensor.Status)
             {
-                alarm(100000);
+                alarm(5000);
+                sensor.Status = true;
             }
         }
 

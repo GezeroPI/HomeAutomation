@@ -7,6 +7,6 @@ namespace Alarm
 {
     class PirSensor: Sensor
     {
-        public PirSensor(bool status) : base(status) { }
+        public PirSensor() : base() { }
     }
 }

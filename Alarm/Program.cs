@@ -21,11 +21,10 @@ namespace Alarm
                 SirenPowerGpio = Pi.Gpio[P1.Gpio23],
                 SirenStartGpio = Pi.Gpio[P1.Gpio24]
             };
-
-            Pi.Gpio[P1.Gpio24].
+            
             //PIR sensors
             //PIR1
-            var pir1 = new PirSensor(false)
+            var pir1 = new PirSensor()
             {
                 NameLocation = "SaloniOnRasp",
                 Data = Pi.Gpio[P1.Gpio25]
@@ -33,8 +32,14 @@ namespace Alarm
             pir1.Data.PinMode = GpioPinDriveMode.Input;
 
             pir1.Attach(siren);
-            pir1.Status = pir1.Data.//edw re pousti m
-
+            while (true) {
+                pir1.Status = pir1.Data.Read();
+                if (pir1.Status)
+                {
+                    Thread.Sleep(3500);
+                    Console.WriteLine("alert");
+                }
+            }
             
 
             //Thread.Sleep(3000);
