@@ -9,9 +9,9 @@ namespace Alarm
     class Program
     {
 
-        static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
+        //static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
 
-        static async Task MainAsync(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Starting Alarm ...");
             Console.WriteLine("Waitting sensors to calibrate ...");
@@ -21,6 +21,8 @@ namespace Alarm
                 SirenPowerGpio = Pi.Gpio[P1.Gpio23],
                 SirenStartGpio = Pi.Gpio[P1.Gpio24]
             };
+
+            Pi.Gpio[P1.Gpio24].
             //PIR sensors
             //PIR1
             var pir1 = new PirSensor(false)
@@ -31,7 +33,9 @@ namespace Alarm
             pir1.Data.PinMode = GpioPinDriveMode.Input;
 
             pir1.Attach(siren);
-            pir1.Status = pir1.Data.Read();
+            pir1.Status = pir1.Data.//edw re pousti m
+
+            
 
             //Thread.Sleep(3000);
             //Console.WriteLine("Ready!");
@@ -104,7 +108,7 @@ namespace Alarm
             //    } while (iterationloop);
 
             //    iterationloop = !iterationloop;
-            }
+            //}
         }
 
 
