@@ -20,6 +20,7 @@ namespace Alarm
                 SirenStartGpio.PinMode = GpioPinDriveMode.Output;
                 //power up the siren
                 SirenPowerGpio.Write(true);
+                Thread.Sleep(100);
                 //start sound/alarm
                 SirenStartGpio.Write(true);
                 Thread.Sleep(1000);

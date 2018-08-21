@@ -9,9 +9,9 @@ namespace Alarm
     class Program
     {
 
-        static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
+        //static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
 
-        static async Task MainAsync(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Starting Alarm ...");
             Console.WriteLine("Waitting sensors to calibrate ...");
@@ -37,10 +37,9 @@ namespace Alarm
             bool iterationloop = true;
             bool sirenStatus = false;
             //Arm infinite loop
-            while (true)
-            {
+            
                 //initialize a thread for arm loop
-                var passwordInput = new Thread(async () => iterationloop = await User.ArmDesarm());
+                var passwordInput = new Thread(() => iterationloop = User.ArmDesarm());
                 passwordInput.IsBackground = true;
                 passwordInput.Start();
                 if (iterationloop)
@@ -48,7 +47,6 @@ namespace Alarm
                     Console.Clear();
                     Console.WriteLine("Give pass to arm!");
                     Thread.Sleep(1000);
-                    continue;
                 }
                 else
                 {
@@ -62,7 +60,7 @@ namespace Alarm
                     Console.WriteLine("Armed");
                     iterationloop = !iterationloop;
                     //initialize a thread for desarm loop
-                    passwordInput = new Thread(async () => iterationloop = await User.ArmDesarm());
+                    passwordInput = new Thread(() => iterationloop = User.ArmDesarm());
                     passwordInput.IsBackground = true;
                     passwordInput.Start();
                 }
@@ -82,15 +80,7 @@ namespace Alarm
                         var sirenAlarm = new Thread(() => Siren.alarm(600000));
                         sirenAlarm.IsBackground = true;
                         sirenAlarm.Start();
-                        var result = await ApiComm.GetResponseAsync("http://localhost:50122/api/SaveRecords/Alarm/-/"+ sensorTriggered);
-                        if (result)
-                        {
-                           Console.WriteLine("Record of the alarm success!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Record of the alarm failed!");
-                        }
+                        
                        
                     }
                     // .. and be sure to Yield/Sleep to prevent 100% CPU usage.
@@ -99,7 +89,7 @@ namespace Alarm
                 } while (iterationloop);
 
                 iterationloop = !iterationloop;
-            }
+            Console.WriteLine("this is the end");
         }
 
 
